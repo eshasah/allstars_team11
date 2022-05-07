@@ -1,5 +1,5 @@
 import React from 'react';
-import './login.css';
+import './signup.css';
 
 const FormSuccess = () => {
   return (
