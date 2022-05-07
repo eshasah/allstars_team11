@@ -1,0 +1,15 @@
+.topBar{
+    display: flex;
+    background-color: grey;
+    width: 50px;
+}
+
+.leftTopBar{
+    flex: 70%;
+    background-color: aqua;
+}
+
+.rightTopBar{
+    flex: 30%;
+    background-color: red;
+}
