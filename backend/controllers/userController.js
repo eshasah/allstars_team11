@@ -1,4 +1,5 @@
 const mysql = require("mysql");
+const { param } = require("../app");
 const pool = require("./../databaseConnection");
 
 exports.getUserByEmailAndPass = (req, res) => {
@@ -26,7 +27,7 @@ exports.getUserByEmailAndPass = (req, res) => {
             message: 'User does not exist!'
           });
         }
-      }
+      } 
     );
   });
 };
@@ -102,8 +103,8 @@ exports.createUser = (req, res) => {
     console.log(`Connect to database as ${connection.threadId}`);
 
     const params = req.body;
-
-    connection.query("INSERT INTO user SET ?", params, (error, rows) => {
+    console.log(params);
+    connection.query("INSERT INTO vaccine_recipient SET ?", params, (error, rows) => {
       connection.release();
 
       if (!error) {

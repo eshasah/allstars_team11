@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(
@@ -17,11 +16,11 @@ import reportWebVitals from './reportWebVitals';
 //reportWebVitals();
 
 
-function BookList(){
-  return (
-    <section className='booklist'>
-      This is section
-    </section>
-  );
-}
+// function BookList(){
+//   return (
+//     <section className='booklist'>
+//       This is section
+//     </section>
+//   );
+// }
 ReactDom.render(<App/>,document.getElementById('root'));

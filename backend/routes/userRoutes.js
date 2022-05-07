@@ -6,11 +6,12 @@ const router = express.Router();
 
 router
   .route("/")
-  .get(userController.getUserByEmailAndPass)
+  .get(userController.getAllUsers)
   .post(userController.createUser)
   .put(userController.updateUser)
   .delete(userController.deleteUser);
 
 router.route("/:id").get(userController.getUserById);
+router.route("/:email/:password").get(userController.getUserByEmailAndPass);
 
 module.exports = router;
