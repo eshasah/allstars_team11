@@ -1,5 +1,5 @@
 const mysql = require("mysql");
-const { param } = require("../app");
+//const { param } = require("../app");
 const pool = require("./../databaseConnection");
 
 exports.getUserByEmailAndPass = (req, res) => {
@@ -10,11 +10,12 @@ exports.getUserByEmailAndPass = (req, res) => {
     }
     console.log(`Connect to database as ${connection.threadId}`);
 
-    const email = req.query.email;
-    const password = req.query.password;
+    console.log(req.params);
+    const email = req.params.email;
+    const password = req.params.password;
 
     connection.query(
-      "SELECT * from user WHERE email = ? AND password = ?",
+      "SELECT * from vaccine_recipient WHERE email = ? AND password = ?",
       [email, password],
       (error, row) => {
         connection.release();

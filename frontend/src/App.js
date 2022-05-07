@@ -6,17 +6,17 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import Home from "./common/Home";
-import FormNew from "./login/FormNew";
+import FormNew from "./signup/FormNew";
 
 function App() {
   return (
-    <FormNew/>
-      // <Router>
-      //   <Routes >
-      //     <Route path="/" element={<Home/>}/>
-      //     <Route path="/newUser/Register" element={<NewRegistration/>}/>
-      //   </Routes >
-      // </Router>
+    
+      <Router>
+        <Routes >
+          <Route path="/" element={<Home/>}/>
+          <Route path="/signUp" element={<FormNew/>}/>
+        </Routes >
+      </Router>
   );
 }
 

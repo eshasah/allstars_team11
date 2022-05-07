@@ -1,9 +1,5 @@
-export default function validateInfo(values) {
+export default function validateLogin(values) {
   let errors = {};
-
-  if (!values.fullname.trim()) {
-    errors.fullname = 'Full name required';
-  }
 
   if (!values.email) {
     errors.email = 'Email required';
@@ -14,12 +10,6 @@ export default function validateInfo(values) {
     errors.password = 'Password is required';
   } else if (values.password.length < 6) {
     errors.password = 'Password needs to be 6 characters or more';
-  }
-
-  if (!values.password2) {
-    errors.password2 = 'Password is required';
-  } else if (values.password2 !== values.password) {
-    errors.password2 = 'Passwords do not match';
   }
   return errors;
 }

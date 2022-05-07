@@ -1,9 +1,9 @@
 import React from 'react';
 import validate from './validateInfo';
 import useForm from './useForm';
-import './login.css';
+import './signup.css';
 
-const FormSignup = ({ submitForm, setUserData }) => {
+const FormSignup = ({ submitForm }) => {
   const { handleChange, handleSubmit, values, errors } = useForm(
     submitForm,
     validate
@@ -24,6 +24,18 @@ const FormSignup = ({ submitForm, setUserData }) => {
             name='fullname'
             placeholder='Enter your fullname'
             value={values.fullname}
+            onChange={handleChange}
+          />
+          {errors.fullname && <p>{errors.fullname}</p>}
+        </div>
+        <div className='form-inputs'>
+          <label className='form-label'>Age</label>
+          <input
+            className='form-input'
+            type='text'
+            name='age'
+            placeholder='Enter your age'
+            value={values.age}
             onChange={handleChange}
           />
           {errors.fullname && <p>{errors.fullname}</p>}
