@@ -45,4 +45,15 @@ CREATE TABLE appointment (
 );
 ALTER TABLE appointment AUTO_INCREMENT=100;
 
+CREATE TABLE `Slot_booking` (
+  `slot_id` int NOT NULL,
+  `date` datetime NOT NULL,
+  `street` varchar(45) NOT NULL,
+  `zip_code` varchar(45) NOT NULL,
+  `city` varchar(45) NOT NULL,
+  `state` varchar(45) NOT NULL,
+  PRIMARY KEY (`slot_id`)
+) ;
+ALTER TABLE Slot_booking AUTO_INCREMENT=100;
+
 
