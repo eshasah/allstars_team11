@@ -3,7 +3,7 @@ import validate from './validateInfo';
 import useForm from './useForm';
 import './signup.css';
 
-const FormSignup = ({ submitForm }) => {
+const FormSignup = ({ submitForm,  setLoginClicked }) => {
   const { handleChange, handleSubmit, values, errors } = useForm(
     submitForm,
     validate
@@ -80,7 +80,7 @@ const FormSignup = ({ submitForm }) => {
           Sign up
         </button>
         <span className='form-input-login'>
-          Already have an account? Login <a href='#'>here</a>
+          Already have an account? Login <a href='#' onClick={() => setLoginClicked(true)}>here</a>
         </span>
       </form>
     </div>

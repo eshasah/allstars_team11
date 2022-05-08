@@ -3,7 +3,7 @@ import validateLogin from './validateLogin';
 import useFormLogin from '../login/useFormLogin';
 import '../signup//signup.css';
 
-const FormLogin = ({ submitForm }) => {
+const FormLogin = ({ submitForm, setLoginClicked }) => {
   const { handleChange, handleSubmit, values, errors } = useFormLogin(
     submitForm,
     validateLogin
@@ -43,7 +43,7 @@ const FormLogin = ({ submitForm }) => {
           Sign up
         </button>
         <span className='form-input-login'>
-          Don't have an account? Signup <a href='#'>here</a>
+          Don't have an account? Signup <a href='#' onClick={() => setLoginClicked(false)}>here</a>
         </span>
       </form>
     </div>
