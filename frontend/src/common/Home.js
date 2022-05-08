@@ -28,7 +28,7 @@ class Home extends React.Component {
   getCitiesByPincode = (event) => {
     this.setState({
       isCitiesAvailble: true,
-      getCities: ["Mancherial", "OldMancherial", "Luxettipet", "Srirampur", "Shirkey"]
+      getCities: ["San Jose", "Fremont", "Milpitas", "Sunnyvale", "San Francisco"]
     })
   }
   render() {
