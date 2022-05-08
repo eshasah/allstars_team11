@@ -41,7 +41,11 @@ const useFormLogin = (callback, validate) => {
         var getURL = "http://localhost:5000/api/v1/users/" + values.email + "/" + values.password;
         fetch(getURL, requestOptions)
         .then(response => response.text())
-        .then(result => console.log(result))
+        .then(result => {
+            console.log(result);
+            localStorage.setItem("user_id", result.user_id);
+            window.location.assign("/");
+        })
         .catch(error => console.log('error', error));
 
     }
