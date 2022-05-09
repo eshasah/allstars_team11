@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Modal, Dropdown } from 'react-bootstrap';
+import TopBar from "./TopBar";
 
 class Home extends React.Component {
   state = {
@@ -35,6 +36,7 @@ class Home extends React.Component {
 
     return (
       <><div>
+          <TopBar/>
         <br></br>
         <div className="container">
 
