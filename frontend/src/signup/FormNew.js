@@ -18,9 +18,8 @@ const FormNew = () => {
             <div className='form-content-left'></div>
             {!isSubmitted && !isLoginClicked &&
             <FormSignup submitForm={submitForm} setLoginClicked={setLoginClicked}/>}
-            {!isSubmitted && isLoginClicked &&
-            <FormLogin submitForm={submitForm} setLoginClicked={setLoginClicked}/>}
-            {isSubmitted && <FormSuccess />}
+            {isLoginClicked && <FormLogin submitForm={submitForm} setLoginClicked={setLoginClicked}/>}
+            {isSubmitted && <FormSuccess setLoginClicked={setLoginClicked} setIsSubmitted={setIsSubmitted}/>}
         </div>
         </>
     );
