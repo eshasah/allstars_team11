@@ -1,5 +1,7 @@
 import React from "react";
 import { Button, Modal, Dropdown } from 'react-bootstrap';
+import BookAppointment from "../appointment/BookAppointment";
+
 
 class Home extends React.Component {
   state = {
@@ -37,38 +39,46 @@ class Home extends React.Component {
       <><div>
         <br></br>
         <div className="container">
-
-          <div id="demo" className="carousel slide" data-ride="carousel">
-
+        
+        <div id="demo" className="carousel slide" data-ride="carousel">
             <ul className="carousel-indicators">
-              <li data-target="#demo" data-slide-to="0" className="active"></li>
-              <li data-target="#demo" data-slide-to="1"></li>
-              <li data-target="#demo" data-slide-to="2"></li>
+                <li data-target="#demo" data-slide-to="0" className="active"></li>
+                <li data-target="#demo" data-slide-to="1"></li>
+                <li data-target="#demo" data-slide-to="2"></li>
             </ul>
 
-            <div className="carousel-inner">
-              <div className="carousel-item active">
-                <img src="https://www.dqindia.com/wp-content/uploads/2020/03/corona-4916954_640.jpg" alt="Los Angeles" width="1100" height="600px" margin="10px" />
-              </div>
-              <div className="carousel-item">
-                <img src="https://c.ndtvimg.com/2020-06/k5890kk8_covid19-vaccine-generic-reuters-650_625x300_10_June_20.jpg?im=Resize=(1230,900)" alt="Chicago" width="1100" height="600" margin="10px" />
-              </div>
-              <div className="carousel-item">
-                <img src="https://i0.wp.com/www.smartprix.com/bytes/wp-content/uploads/2021/02/aarogya.png?fit=1200%2C630&ssl=1" alt="New York" width="1100" height="600px" margin="10px" />
-              </div>
-            </div>
+            <div className="carousel-inner banner" style={{height: '200px'}}>
+                <div className="carousel-item active">
+                    <div>
+                        <h2 className="color-primary text-left">Second booster shot now available for some people</h2>
+                        <p>The CDC now recommends a second booster shot for people over 50, those who are immune-compromised, and those who got the Johnson &amp; Johnson vaccine.</p>
+                        <p><a href="https://www.cdc.gov/media/releases/2022/s0328-covid-19-boosters.html">See if you’re eligible<span class="ca-gov-icon-external-link link-icon" aria-hidden="true"></span></a>.</p>
+                    </div>
+                </div>
+                <div className="carousel-item">
+                    <img src="https://c.ndtvimg.com/2020-06/k5890kk8_covid19-vaccine-generic-reuters-650_625x300_10_June_20.jpg?im=Resize=(1230,900)" alt="Chicago" width="1100" height="600" margin="10px" />
+                </div>
+                <div className="carousel-item">
+                    <img src="https://i0.wp.com/www.smartprix.com/bytes/wp-content/uploads/2021/02/aarogya.png?fit=1200%2C630&ssl=1" alt="New York" width="1100" height="600px" margin="10px" />
+                </div>
+                </div>
 
             <a className="carousel-control-prev" href="#demo" data-slide="prev">
-              <span className="carousel-control-prev-icon"></span>
+                <span className="carousel-control-prev-icon"></span>
             </a>
             <a className="carousel-control-next" href="#demo" data-slide="next">
-              <span className="carousel-control-next-icon"></span>
+                <span className="carousel-control-next-icon"></span>
             </a>
-          </div>
+        </div>
 
         </div>
         <div className="text-center"><br></br>
 
+        <BookAppointment/>
+
+        </div>
+        </div>
+        {/* 
           <button type="button" className="btn btn-info"  onClick={this.createBooking}>Book Vaccine</button>&nbsp;&nbsp;&nbsp;
           <button type="button" className="btn btn-info"  onClick={this.getVaccineHistory}>Vaccine History</button><br></br><br></br>
          
@@ -163,7 +173,9 @@ class Home extends React.Component {
               Book Now
             </Button>
           </Modal.Footer>
-        </Modal></>
+        </Modal> */}
+
+        </>
     );
   }
 }
