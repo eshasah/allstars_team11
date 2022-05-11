@@ -1,0 +1,87 @@
+.vaccine-card{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 170px;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 50%);
+    background-color: #f8f9fa;
+    border-radius: 0.25rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.1rem;
+}
+
+.vaccine-card:hover {
+    background-color: #dee2e6;
+    border: #ffffff;
+}
+
+.vaccine-title{
+        display: flex;
+        flex-direction: row;
+        margin-left: 15px;
+        margin-top: 19px;
+        /* min-width: 85px; */
+        /* height: 25px; */
+        /* font-family: HelveticaNeue; */
+        font-size: 50px;
+        font-weight: 500;
+        /* font-style: normal; */
+        /* font-stretch: normal; */
+        /* line-height: normal; */
+        /* letter-spacing: -0.6px; */
+        /* color: #ffffff;*/
+}
+
+.vaccine-location{
+        margin-left: 15px;
+        margin-top: 7px;
+        font-size: 14px;
+        text-align: left;
+}
+
+.vaccine-book-div{
+    align-self: end;
+    margin: 0px 20px;
+}
+.vaccine-book-btn{
+    top: 50%;
+    left: 50%;
+    border-radius: 6px;
+    background-color: white;
+    color: black;
+    border: 2px solid #1f2574;
+    padding: 16px 30px;
+    cursor: pointer;
+}
+
+.vaccine-book-btn:hover{
+    background-color: #1f2574;
+    color: white;
+}
+
+.MainDashboardContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filterDiv{
+    background-color: #7b81ce;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filter-inputs{
+    padding: 10px;
+}
+
+.filter-inputs label{
+    padding: 10px;
+}

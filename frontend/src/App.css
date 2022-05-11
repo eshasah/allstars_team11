@@ -54,3 +54,15 @@
   -webkit-backface-visibility: visible;
   backface-visibility: visible;
 }
+
+.color-primary, .color-purple {
+  color: #1f2574 !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.banner{
+  border: #1f2574 !important;
+}
