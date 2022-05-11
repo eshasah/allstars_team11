@@ -5,15 +5,15 @@ import {
   Route
 } from "react-router-dom";
 import "./App.css";
-import Home from "./common/Home";
-import FormNew from "./signup/FormNew";
-import VaccineCard from "./appointment/VaccineBody";
+import Home from './common/Home';
+import FormNew from './signup/FormNew';
 
 function App() {
   return (
       <Router>
         <Routes >
-          <Route path="/" element={<Home/>}/>
+          <Route path="/" element={<FormNew/>}/>
+          <Route path="/home" element={<Home/>}/>
           <Route path="/signUp" element={<FormNew/>}/>
         </Routes >
       </Router>

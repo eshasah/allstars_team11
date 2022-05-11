@@ -44,7 +44,7 @@ const useFormLogin = (callback, validate) => {
         .then(result => {
             console.log(result);
             localStorage.setItem("user_id", result.user_id);
-            window.location.assign("/");
+            window.location.assign("/home");
         })
         .catch(error => console.log('error', error));
 
