@@ -11,21 +11,6 @@ const BookButton = (props) => {
   )
 }
 
-const Image = (props) => {
-  return(
-    <img src={props.image} alt="Logo" className="picture">
-    </img>
-  )
-}
-
-const Handle = (props) => {
-  return(
-    <div className="handle">
-      {props.handle}
-    </div>
-  )
-}
-
 const Title = (props) => {
   return(
     <div className='vaccine-title'>
@@ -42,12 +27,25 @@ const Location = (props) => {
   )
 }
 
+const Timing = (props) => {
+  return(
+    <div className='vaccine-time'>
+      <h5>{props.date}</h5>
+      <h5>{props.timing}</h5>
+    </div>
+  )
+}
+
 const VaccineCard = (props) => {
-    const location = '1 Washington Sq, San Jose'
   return(
     <div className='vaccine-card'>
-        <Title title={props.title}/>
-        <Location address={props.address}/>
+        <div className='vaccine-details'>
+          <Title title={props.title}/>
+          <div>
+            <Location address={props.address}/>
+            <Timing timing={props.timing} date={props.date}/>
+          </div>      
+        </div>
         <BookButton text={'Book'}/>
     </div>
   )

@@ -6,31 +6,43 @@ export default function BookAppointment(){
     const available_slots = [
         {
             title: 'Pfizer-BioNTech - Dose 1',
-            address: '344 Tully Rd, San Jose, CA 95111'
+            address: '344 Tully Rd, San Jose, CA 95111',
+            date: '05/20/2022',
+            timing: '2:00pm'
         },
         {
             title: 'Pfizer-BioNTech - Dose 2',
-            address: '344 Tully Rd, San Jose, CA 95111'
+            address: '344 Tully Rd, San Jose, CA 95111',
+            date: '05/20/2022',
+            timing: '2:10pm'
         }
         ,
         {
             title: 'Moderna - Dose 1',
-            address: '344 Tully Rd, San Jose, CA 95111'
+            address: '344 Tully Rd, San Jose, CA 95111',
+            date: '05/20/2022',
+            timing: '2:20pm'
         }
         ,
         {
             title: 'Moderna - Dose 2',
-            address: '344 Tully Rd, San Jose, CA 95111'
+            address: '344 Tully Rd, San Jose, CA 95111',
+            date: '05/21/2022',
+            timing: '2:00pm'
         }
         ,
         {
             title: 'Pfizer-BioNTech - Dose 1',
-            address: '344 Tully Rd, San Jose, CA 95111'
+            address: '344 Tully Rd, San Jose, CA 95111',
+            date: '05/18/2022',
+            timing: '1:30pm'
         }
         ,
         {
             title: 'Pfizer-BioNTech - Dose 1',
-            address: '344 Tully Rd, San Jose, CA 95111'
+            address: '344 Tully Rd, San Jose, CA 95111',
+            date: '05/20/2022',
+            timing: '3:00pm'
         }
     ]
 
@@ -79,7 +91,7 @@ export default function BookAppointment(){
             </div>
             <div>
                 {
-                    available_slots.map(item => <VaccineCard title={item.title} address={item.address}/>)
+                    available_slots.map(item => <VaccineCard title={item.title} address={item.address} date={item.date} timing={item.timing}/>)
                 }
             </div>
 

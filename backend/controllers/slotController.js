@@ -38,6 +38,12 @@ exports.bookSlot = (req, res) => {
        if(date==null || street==null || zip_code== null|| city==null|| state==null){
          console.log('Enter a valid value');
        }
+let searchQuery = "SELECT * from appointment WHERE ";
+
+if(date){
+  searchQuery = searchQuery + "date = ";
+}
+
        connection.query(
          "SELECT * from appointment WHERE date = ? AND street =? AND zip_code=? AND city=? AND state=?",
          [date, street, zip_code, city, state],

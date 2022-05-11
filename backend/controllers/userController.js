@@ -41,7 +41,7 @@ exports.getAllUsers = (req, res) => {
     }
     console.log(`Connect to database as ${connection.threadId}`);
 
-    connection.query("SELECT * from user", (error, rows) => {
+    connection.query("SELECT * from vaccine_recipient", (error, rows) => {
       connection.release();
 
       if (!error) {
@@ -59,7 +59,7 @@ exports.getUserById = (req, res) => {
     console.log(`Connect to database as ${connection.threadId}`);
 
     connection.query(
-      "SELECT * from user WHERE user_id = ?",
+      "SELECT * from vaccine_recipient WHERE user_id = ?",
       [req.params.id],
       (error, rows) => {
         connection.release();
@@ -80,7 +80,7 @@ exports.deleteUser = (req, res) => {
     console.log(`Connect to database as ${connection.threadId}`);
 
     connection.query(
-      "DELETE from user WHERE user_id = ?",
+      "DELETE from vaccine_recipient WHERE user_id = ?",
       [req.params.id],
       (error, rows) => {
         connection.release();
@@ -138,7 +138,7 @@ exports.updateUser = (req, res) => {
     } = req.body;
 
     connection.query(
-      "UPDATE user SET name = ?, email = ?, password = ?, phone_no = ?, nid = ?, age = ?, location = ?, occupation = ? WHERE user_id = ?",
+      "UPDATE vaccine_recipient SET name = ?, email = ?, password = ?, phone_no = ?, nid = ?, age = ?, location = ?, occupation = ? WHERE user_id = ?",
       [
         name,
         email,
