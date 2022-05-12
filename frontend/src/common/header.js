@@ -17,6 +17,7 @@ export default class Header extends Component {
     handleClickLogout(){
         localStorage.removeItem('token');
         localStorage.setItem('isLoggedIn', false);
+        localStorage.setItem('user_id', 0);
         this.setState({ toDashboard: true });
     }
 
