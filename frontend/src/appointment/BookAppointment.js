@@ -57,6 +57,22 @@ export default function BookAppointment(){
         console.log("type: " + doseType);
         console.log("company: " + doseCompany);
         console.log("date: " + slotDate);
+
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+        };
+
+        fetch("http://localhost:5000/api/v1/slot/?date=" + slotDate + "&city=" + city + "&dose_type=" + doseType + "&dose_company=" + doseCompany , requestOptions)
+        .then(result => {
+            console.log(result);
+            console.log(result.body);
+        })
+        .catch(error => console.log('error', error));
     }
 
     return(

@@ -40,7 +40,7 @@ const FormLogin = ({ submitForm, setLoginClicked }) => {
           {errors.password && <p>{errors.password}</p>}
         </div>
         <button className='form-input-btn' type='submit'>
-          Sign up
+          Log in
         </button>
         <span className='form-input-login'>
           Don't have an account? Signup <a href='#' onClick={() => setLoginClicked(false)}>here</a>
