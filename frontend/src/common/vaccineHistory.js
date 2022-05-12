@@ -31,7 +31,7 @@ render() {
 
     return (
 
-      <><Header/>
+      <><Header/> <br></br>
       <div id="demo" className="carousel slide" data-ride="carousel">
         <ul className="carousel-indicators">
           <li data-target="#demo" data-slide-to="0" className="active"></li>
