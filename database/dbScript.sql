@@ -23,7 +23,8 @@ ALTER TABLE vaccine_recipient AUTO_INCREMENT=100;
 
 CREATE TABLE dose (
     dose_id int NOT NULL AUTO_INCREMENT,
-    dose_no varchar(255) NOT NULL,
+    dose_type varchar(255) NOT NULL,
+    dose_company varchar(255) NOT NULL,
     PRIMARY KEY (dose_id)
 );
 ALTER TABLE dose AUTO_INCREMENT=100;
@@ -43,10 +44,10 @@ CREATE TABLE available_slot(
     slot_id int NOT NULL,
     dose_id int NOT NULL,
     numer_of_slots int DEFAULT 0,
-    PRIMARY KEY (slot_id, dose_id)
+    PRIMARY KEY (slot_id, dose_id),
     FOREIGN KEY (slot_id) REFERENCES slot(slot_id),
     FOREIGN KEY (dose_id) REFERENCES dose(dose_id)
-)
+);
 
 CREATE TABLE appointment (
 	apt_id int NOT NULL AUTO_INCREMENT,

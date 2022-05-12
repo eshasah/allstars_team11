@@ -62,15 +62,13 @@ export default function BookAppointment(){
                     </select>
                 </div>
                 <div className='filter-inputs'>
-                    <label className='filter-label'>Zip code: </label>
-                    <input
-                        className='filter-input'
-                        type='text'
-                        name='zip-code'
-                        placeholder='Enter a zip code'
-                        // value={values.email}
-                        // onChange={handleChange}
-                    />
+                    <label className='filter-label'>Dose type: </label>
+                    <select name="dose" id="dose-select">
+                        <option value="">--Please choose Dose type--</option>
+                        <option value="dose-1">Dose - 1</option>
+                        <option value="dose-2">Dose -2</option>
+                        <option value="booster">Booster</option>
+                    </select>
                 </div>
                 <div className='filter-inputs'>
                     <label className='filter-label'>Date: </label>
@@ -78,9 +76,6 @@ export default function BookAppointment(){
                         className='filter-input'
                         type='date'
                         name='apt-date'
-                        // placeholder='Enter your password'
-                        // value={values.password}
-                        // onChange={handleChange}
                     />
                 </div>
                 <div className='filter-inputs'>
