@@ -54,7 +54,6 @@ export default function BookAppointment(){
                     <select name="city" id="city-select">
                         <option value="">--Please choose a City--</option>
                         <option value="san-jose">San Jose</option>
-                        <option value="santa-clara">Santa Clara</option>
                         <option value="sunnyvale">Sunnyvale</option>
                     </select>
                 </div>
@@ -65,6 +64,15 @@ export default function BookAppointment(){
                         <option value="dose-1">Dose - 1</option>
                         <option value="dose-2">Dose -2</option>
                         <option value="booster">Booster</option>
+                    </select>
+                </div>
+                <div className='filter-inputs'>
+                    <label className='filter-label'>Vaccine Type: </label>
+                    <select name="vaccine" id="vaccine-select">
+                        <option value="">--Please choose Vaccine Type--</option>
+                        <option value="pfizer">Pfizer-BioNTech</option>
+                        <option value="moderna">Moderna</option>
+                        <option value="johnson">Johnson &amp; Johnson</option>
                     </select>
                 </div>
                 <div className='filter-inputs'>

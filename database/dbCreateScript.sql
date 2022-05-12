@@ -32,6 +32,7 @@ ALTER TABLE dose AUTO_INCREMENT=100;
 CREATE TABLE slot (
 	slot_id int NOT NULL AUTO_INCREMENT,
     start_time datetime NOT NULL,
+    place varchar(50) NOT NULL,
     street varchar(45) NOT NULL,
     zip_code varchar(5) NOT NULL,
     city varchar(45) NOT NULL,
@@ -43,7 +44,7 @@ ALTER TABLE slot AUTO_INCREMENT=100;
 CREATE TABLE available_slot(
     slot_id int NOT NULL,
     dose_id int NOT NULL,
-    numer_of_slots int DEFAULT 0,
+    number_of_slots int DEFAULT 0,
     PRIMARY KEY (slot_id, dose_id),
     FOREIGN KEY (slot_id) REFERENCES slot(slot_id),
     FOREIGN KEY (dose_id) REFERENCES dose(dose_id)
