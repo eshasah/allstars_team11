@@ -53,12 +53,9 @@ export default function BookAppointment(){
                     <label className='filter-label'>City: </label>
                     <select name="city" id="city-select">
                         <option value="">--Please choose a City--</option>
-                        <option value="dog">Dog</option>
-                        <option value="cat">Cat</option>
-                        <option value="hamster">Hamster</option>
-                        <option value="parrot">Parrot</option>
-                        <option value="spider">Spider</option>
-                        <option value="goldfish">Goldfish</option>
+                        <option value="san-jose">San Jose</option>
+                        <option value="santa-clara">Santa Clara</option>
+                        <option value="sunnyvale">Sunnyvale</option>
                     </select>
                 </div>
                 <div className='filter-inputs'>
