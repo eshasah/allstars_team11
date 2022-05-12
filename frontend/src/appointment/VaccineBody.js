@@ -22,6 +22,7 @@ const Title = (props) => {
 const Location = (props) => {
   return(
     <div className="vaccine-location">
+      <h5>{props.place}</h5>
       <span>{props.address}</span>
     </div>
   )
@@ -42,7 +43,7 @@ const VaccineCard = (props) => {
         <div className='vaccine-details'>
           <Title title={props.title}/>
           <div>
-            <Location address={props.address}/>
+            <Location address={props.street} place={props.place}/>
             <Timing timing={props.timing} date={props.date}/>
           </div>      
         </div>

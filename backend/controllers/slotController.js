@@ -30,23 +30,34 @@ exports.bookSlot = (req, res) => {
       console.log('Connection to database as ${connection.threadId}');
       
       const date = req.query.date;
-      const street = req.query.street;
-      const zip_code = req.query.zip_code;
       const city = req.query.city;
-      const state = req.query.state;
+      const dose_type = req.query.dose_type;
+      const dose_company = req.query.dose_company;
       
-       if(date==null || street==null || zip_code== null|| city==null|| state==null){
-         console.log('Enter a valid value');
-       }
-let searchQuery = "SELECT * from appointment WHERE ";
+let searchQuery = "select * from available_slot a "
+                  + "inner join slot s on s.slot_id = a.slot_id "
+                  + "inner join dose d on d.dose_id = a.dose_id "
+                  + "where a.number_of_slots > 0 ";
 
 if(date){
-  searchQuery = searchQuery + "date = ";
+  searchQuery = searchQuery + "and CAST(s.start_time as date) = '" + date + "'";
+}
+
+if(city){
+  searchQuery = searchQuery + "and s.city = ? ";
+}
+
+if(dose_type){
+  searchQuery = searchQuery + "and d.dose_type = ? ";
+}
+
+if(dose_company){
+  searchQuery = searchQuery + "and d.dose_company like ? ";
 }
 
        connection.query(
-         "SELECT * from appointment WHERE date = ? AND street =? AND zip_code=? AND city=? AND state=?",
-         [date, street, zip_code, city, state],
+         searchQuery,
+         [date, city, dose_type, dose_company],
           (error, row) => {
             connection.release();
 
