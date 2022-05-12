@@ -1,0 +1,11 @@
+.headermodify{
+    text-align: center !important;
+    position: relative;
+    left: 37.5% !important;
+    background-color: black;
+    color: white;
+    font-style: bold;
+    font-size: xx-large;
+    opacity: 0.9;
+    margin-bottom: -1%;
+}

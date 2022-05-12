@@ -5,7 +5,7 @@ const pool = mysql.createPool({
   host: "localhost",
   port: "3306",
   user: "root",
-  password: "123456",
+  password: "12345678",
   database: "CMPE280",
   multipleStatements: true,
 });

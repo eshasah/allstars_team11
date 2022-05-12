@@ -11,6 +11,18 @@ const BookButton = (props) => {
   )
 }
 
+
+
+const HistoryButton = (props) => {
+  return(
+    <div className='vaccine-history-div'>
+        <button type='submit' className="vaccine-history-btn">
+            {props.text}
+        </button>
+    </div>
+  )
+}
+
 const Title = (props) => {
   return(
     <div className='vaccine-title'>

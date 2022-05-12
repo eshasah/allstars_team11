@@ -7,6 +7,7 @@ import {
 import "./App.css";
 import Home from './common/Home';
 import FormNew from './signup/FormNew';
+import VaccinationHistory from './common/vaccineHistory'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<FormNew/>}/>
           <Route path="/home" element={<Home/>}/>
           <Route path="/signUp" element={<FormNew/>}/>
+          <Route path="/vaccineHistory" element={<VaccinationHistory/>}/>
         </Routes >
       </Router>
   );

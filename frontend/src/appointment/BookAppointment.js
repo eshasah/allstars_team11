@@ -3,6 +3,7 @@ import VaccineCard from "./VaccineBody";
 
 export default function BookAppointment(){
 
+    
     const available_slots = [
         {
             title: 'Pfizer-BioNTech - Dose 1',
@@ -44,8 +45,8 @@ export default function BookAppointment(){
             date: '05/20/2022',
             timing: '3:00pm'
         }
-    ]
-
+      ]
+      
     return(
         <div calssName="MainDashboardContainer">         
             <div className="filterDiv">
@@ -78,6 +79,11 @@ export default function BookAppointment(){
                 <div className='filter-inputs'>
                     <button type='submit' className="vaccine-book-btn">
                         Search
+                    </button>
+                </div>
+                <div className='filter-inputs'>
+                    <button type='submit' className="vaccine-history-btn">
+                        Show History
                     </button>
                 </div>
             </div>
