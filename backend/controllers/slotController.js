@@ -25,8 +25,7 @@ exports.bookSlot = (req, res) => {
       if (!error) {
         res.status(200).send({
           status: 200,
-          message: "Appointment has been added succesfully",
-          data: rows
+          message: "Appointment has been added succesfully"
         });
       } else {
         console.log(error);
@@ -82,7 +81,8 @@ console.log(searchQuery);
             connection.release();
 
             if(!error) {
-              res.status(200).send(row);
+              console.log(row);
+              res.send(row);
             }
             else {
               console.log(error);

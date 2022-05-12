@@ -68,10 +68,16 @@ export default function BookAppointment(){
         };
 
         fetch("http://localhost:5000/api/v1/slot/?date=" + slotDate + "&city=" + city + "&dose_type=" + doseType + "&dose_company=" + doseCompany , requestOptions)
-        .then(result => {
-            console.log(result);
-            console.log(result.body);
-        })
+        .then(function(response) {
+      return response.json();
+    })
+        .then(function(data) {
+      //var userid = JSON.parse(data);
+      console.log(data);
+      setAvailableSlots(data);
+      console.log(availableSlots);
+      
+    })
         .catch(error => console.log('error', error));
     }
 
@@ -101,7 +107,6 @@ export default function BookAppointment(){
                         <option value="">--Please choose Vaccine Type--</option>
                         <option value="Pfizer-BioNTech">Pfizer-BioNTech</option>
                         <option value="Moderna">Moderna</option>
-                        <option value="Johnson &amp; Johnson">Johnson &amp; Johnson</option>
                     </select>
                 </div>
                 <div className='filter-inputs'>
@@ -122,7 +127,8 @@ export default function BookAppointment(){
             <div>
                 {
                     availableSlots.map(item => 
-                        <VaccineCard title={item.title} address={item.address} date={item.date} timing={item.timing} place={item.place}/>)
+                        <VaccineCard title={item.dose_company + " - " + item.dose_type} address={item.street + ", " + item.city + ", " + item.state + " " + item.zip_code}
+                         datetime={item.start_time} place={item.place}/>)
                 }
             </div>
 

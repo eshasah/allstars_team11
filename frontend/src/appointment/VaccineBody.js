@@ -38,13 +38,17 @@ const Timing = (props) => {
 }
 
 const VaccineCard = (props) => {
+
+  let timing = new Date(props.datetime);
+
+
   return(
     <div className='vaccine-card'>
         <div className='vaccine-details'>
           <Title title={props.title}/>
           <div>
-            <Location address={props.street} place={props.place}/>
-            <Timing timing={props.timing} date={props.date}/>
+            <Location address={props.address} place={props.place}/>
+            <Timing timing={props.datetime} date={props.date}/>
           </div>      
         </div>
         <BookButton text={'Book'}/>
