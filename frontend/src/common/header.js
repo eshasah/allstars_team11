@@ -21,6 +21,14 @@ export default class Header extends Component {
         this.setState({ toDashboard: true });
     }
 
+    handleClickBookVaccine(){
+        window.location.assign("/home");
+    }
+
+    handleClickVaccineHistory(){
+        window.location.assign("/vaccineHistory");
+    }
+
     render() {
         if (this.state.toDashboard === true) {
             return <Navigate to='/' />
@@ -30,7 +38,23 @@ export default class Header extends Component {
                 <TitleComponent title="Covid Vaccination"></TitleComponent>
 
                 <h2 style={{ color: "white" }}>COVID VACCINATION BOOKING</h2>
-                <div style={{ paddingLeft: 1100 }}></div>
+                <div style={{ paddingLeft: 300 }}></div>
+                <button
+                    className="btn btn-primary btn-block" 
+                    style={{width: '150px'}}
+                    onClick={this.handleClickBookVaccine.bind(this)}
+                  >
+                    Book Vaccine
+                  </button>
+                  <div style={{ paddingLeft: 75 }}></div>
+                  <button
+                    className="btn btn-primary btn-block" 
+                    style={{width: '150px'}}
+                    onClick={this.handleClickVaccineHistory.bind(this)}
+                  >
+                    Vaccine History
+                  </button>
+                <div style={{ paddingLeft: 300 }}></div>
                 <button
                     className="btn btn-primary btn-block" 
                     style={{width: '150px'}}
