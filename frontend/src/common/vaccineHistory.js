@@ -1,42 +1,44 @@
-import React from "react";
-import axios from 'axios'
-import Header from './header'
-import VaccineCard from "../appointment/VaccineHistory";
-//import Sidebar from "./user_sidebar";
+import React, { useState } from "react";
+import Header from './header';
+import VaccineHistory from "../appointment/VaccineHistory";
 
 
+export default function VaccinationHistory() {
+  
 
-class VaccinationHistory extends React.Component {
-  state = {
-    size: 0,
-    getVaccineData: [],
-    header: ["Dose", "Vaccination Name", "Reference Id", "Date of Vaccination", "Registered Mobile Number"],
-    vaccineHistory: [
-      {"dose": "1", "vaccinationName": "Moderna", "referenceId": 1, "dateOfVaccination": "12/03/2022", "mobileNo": 678463891},
-      {"dose": "2", "vaccinationName": "Pfizer-BioNTech", "referenceId": 2, "dateOfVaccination": "12/06/2022", "mobileNo": 938916784},
-      {"dose": "3", "vaccinationName": "Moderna", "referenceId": 3, "dateOfVaccination": "12/09/2022", "mobileNo": 7676576788},
-    ]
+  const [vaccineHistory, setVaccineHistory] = useState([]);
+
+  if(vaccineHistory.length > 0){
+    console.log("ok");
   }
+  else{
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
 
+    const user_id = localStorage.getItem("user_id");
 
-  // componentDidMount() {
-  //   const url = 'http://localhost:5000/api/v1/vaccineHistory'  // Vaccination History API
-  //   const user_id = localStorage.getItem('user_id')
-  //   axios.post(url, { user_id }).then((result) => {
-  //     if (result.status == 200) {
-  //       console.log(result)
-  //       this.setState({
-  //         vaccineHistory: result.data,
-  //       })
-  //     }
-  //   })
-  // }
-render() {
+    fetch("http://localhost:5000/api/v1/history/" + user_id, requestOptions)
+      .then(function(response) {
+      return response.json();
+    })
+      .then(function(result){
+        console.log(result);
+        setVaccineHistory(result);
+      })
+      .catch(error => console.log('error', error));
+  }
+  
+
 
     return (
-
-      <><Header/> <br></br>
-      <div id="demo" className="carousel slide" data-ride="carousel">
+      
+      <><div>
+        
+        <div></div>
+        <Header/><br></br>
+        <div id="demo" className="carousel slide" data-ride="carousel">
         <ul className="carousel-indicators">
           <li data-target="#demo" data-slide-to="0" className="active"></li>
           <li data-target="#demo" data-slide-to="1"></li>
@@ -57,23 +59,19 @@ render() {
         <a className="carousel-control-next" href="#demo" data-slide="next">
           <span className="carousel-control-next-icon"></span>
         </a>
-      </div><><br></br>
-      
-          <h1 className="text-center">Vaccination History</h1>
-          <br></br>
-          <h3 className="text-center"><b>This tab allows you to see the vaccination history.</b> </h3>
-          <br></br><div className="container">
-          <div>
-                {
-                    this.state.vaccineHistory.map(vaccine => 
-                        <VaccineCard VaccineName={vaccine.vaccinationName} Dose={vaccine.dose} date={vaccine.dateOfVaccination} Mobile={vaccine.mobileNo}/>)
+      </div>
+        <div className="text-center"><br></br>
+
+        <h3>Vaccine History</h3>
+          {
+                    vaccineHistory.map(item => 
+                        <VaccineHistory title={item.dose_company + " - " + item.dose_type} address={item.street + ", " + item.city + ", " + item.state + " " + item.zip_code}
+                         datetime={item.start_time} place={item.place} slotData={item}/>)
                 }
-            </div>
+        </div>
+        </div>
 
-          </div></></>
-    )
+        </>
+    );
 }
 
-}
-
-export default VaccinationHistory;

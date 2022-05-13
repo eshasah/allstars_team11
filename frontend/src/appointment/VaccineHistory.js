@@ -1,61 +1,93 @@
 import React from 'react';
-import './appointment.css';
+import '../appointment/appointment.css';
 
-const BookButton = (props) => {
+const CancelButton = (props) => {
   return(
     <div className='vaccine-book-div'>
-        <button type='submit' className="vaccine-book-btn">
+        <button type='submit' className="vaccine-book-btn" onClick={props.handleCancel}>
             {props.text}
         </button>
     </div>
   )
 }
 
-const VaccineName = (props) => {
+const Title = (props) => {
   return(
     <div className='vaccine-title'>
-      <h2>{props.VaccineName}</h2>
+      <h2>{props.title}</h2>
     </div>
   )
 }
 
-const Dose = (props) => {
+const Location = (props) => {
   return(
-    <div className="vaccine-dose-div">
-      <h3> DOSE - {props.Dose}</h3>
+    <div className='vaccine-dose-div'>
+      <h5>{props.place}</h5>
+      <span>{props.address}</span>
     </div>
   )
 }
 
-const Date = (props) => {
+const Timing = (props) => {
   return(
     <div className='vaccine-time'>
-      <h3> Vaccination Date : {props.date}</h3>
+      <h5>{props.date} at {props.timing}</h5>
     </div>
   )
 }
 
-const Mobile = (props) => {
-    return(
-      <div className='vaccine-time'>
-        <h3> Mobile : {props.Mobile}</h3>
-      </div>
-    )
-  }
+const dateFormat = (datetime) => {
+    return (datetime.getMonth() + 1) + 
+    "/" +  datetime.getDate() +
+    "/" +  datetime.getFullYear();
+}
+
+const timeFormat = (datetime) => {
+    return datetime.getHours() + 
+    ":" +  datetime.getMinutes();
+}
 
 const VaccineCard = (props) => {
+  const slotData = props.slotData;
+  let timing = new Date(props.datetime);
+
+  const handleCancel = () =>{
+    console.log(slotData);
+
+    const user_id = localStorage.getItem("user_id");
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+      "slot_id": slotData.slot_id,
+      "dose_id": slotData.dose_id,
+      "user_id": user_id,
+      "apt_status": "Cancelled"
+    });
+
+    var requestOptions = {
+      method: 'DELETE',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+    fetch("http://localhost:5000/api/v1/slot/" + props.apt_id , requestOptions)
+      .then(response => response.text())
+      .then(function(result) {
+        window.location.assign("/bookingConfirmation");
+      })
+      .catch(error => console.log('error', error));
+  }
   return(
     <div className='vaccine-card'>
         <div className='vaccine-details'>
-          <VaccineName VaccineName={props.VaccineName}/>
+          <Title title={props.title}/>
           <div>
-            <Date date={props.date}/>
-          </div>   
-          <div>
-            <Mobile Mobile={props.Mobile}/>
-          </div>  
+            <Location address={props.address} place={props.place}/>
+            <Timing date={dateFormat(timing)} timing={timeFormat(timing)}/>
+          </div>      
         </div>
-        <Dose Dose={props.Dose}/>
     </div>
   )
 }

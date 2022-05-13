@@ -11,7 +11,7 @@ exports.getHistory = (req, res)=>{
        if(user_id==null){
          console.log('Enter a valid value');
        }
-let searchQuery = "SELECT * FROM appointment app INNER JOIN vaccine_recipient User ON app.user_id = User.user_id INNER JOIN dose d ON d.dose_id = app.dose_id where app.user_id = ?";
+let searchQuery = "SELECT app.*, d.*, s.* FROM appointment app INNER JOIN vaccine_recipient User ON app.user_id = User.user_id INNER JOIN dose d ON d.dose_id = app.dose_id INNER JOIN slot s ON s.slot_id = app.slot_id where app.user_id = ?";
        connection.query(
         searchQuery,
          [user_id],
@@ -19,7 +19,7 @@ let searchQuery = "SELECT * FROM appointment app INNER JOIN vaccine_recipient Us
             connection.release();
 
             if(!error) {
-              res.status(200).send(row);
+              res.send(row);
             }
             else {
               console.log(error);

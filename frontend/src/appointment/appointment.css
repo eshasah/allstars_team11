@@ -63,7 +63,7 @@
     align-self: end;
     margin: 0px 20px;
     position: relative;
-    margin-top: -8%;
+    text-align: justify;
 }
 .vaccine-book-btn{
     top: 50%;
