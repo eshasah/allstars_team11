@@ -59,6 +59,12 @@
     position: relative;
     margin-top: -8%;
 }
+.vaccine-dose-div{
+    align-self: end;
+    margin: 0px 20px;
+    position: relative;
+    margin-top: -8%;
+}
 .vaccine-book-btn{
     top: 50%;
     left: 50%;
