@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Header from './header';
 import VaccineHistory from "../appointment/VaccineHistory";
+import backendServer from "../WebConfig";
 
 
 export default function VaccinationHistory() {
@@ -19,7 +20,7 @@ export default function VaccinationHistory() {
 
     const user_id = localStorage.getItem("user_id");
 
-    fetch("http://localhost:5000/api/v1/history/" + user_id, requestOptions)
+    fetch(backendServer + "/api/v1/history/" + user_id, requestOptions)
       .then(function(response) {
       return response.json();
     })

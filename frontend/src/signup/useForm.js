@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import backendServer from "../WebConfig";
 
 const useForm = (callback, validate, setUserDetails) => {
   const [values, setValues] = useState({
@@ -64,7 +65,7 @@ const useForm = (callback, validate, setUserDetails) => {
         redirect: 'follow'
         };
 
-        fetch("http://localhost:5000/api/v1/users/", requestOptions)
+        fetch(backendServer + "/api/v1/users/", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error)); 

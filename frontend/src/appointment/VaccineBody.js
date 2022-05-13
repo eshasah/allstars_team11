@@ -1,5 +1,6 @@
 import React from 'react';
 import './appointment.css';
+import backendServer from "../WebConfig";
 
 const BookButton = (props) => {
   return(
@@ -72,7 +73,7 @@ const VaccineCard = (props) => {
       redirect: 'follow'
     };
 
-    fetch("http://localhost:5000/api/v1/slot/", requestOptions)
+    fetch(backendServer + "/api/v1/slot/", requestOptions)
       .then(response => response.text())
       .then(function(result) {
         window.location.assign("/bookingConfirmation");

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import backendServer from "../WebConfig";
 
 const useFormLogin = (callback, validate) => {
   const [values, setValues] = useState({
@@ -38,7 +39,7 @@ const useFormLogin = (callback, validate) => {
         redirect: 'follow'
         };
 
-        var getURL = "http://localhost:5000/api/v1/users/" + values.email + "/" + values.password;
+        var getURL = backendServer + "/api/v1/users/" + values.email + "/" + values.password;
         fetch(getURL, requestOptions)
         .then(function(response) {
       return response.json();

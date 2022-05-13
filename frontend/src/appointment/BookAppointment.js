@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import VaccineCard from "./VaccineBody";
+import backendServer from "../WebConfig";
 
 export default function BookAppointment(){
 
@@ -28,7 +29,7 @@ export default function BookAppointment(){
         redirect: 'follow'
         };
 
-        fetch("http://localhost:5000/api/v1/slot/?date=" + slotDate + "&city=" + city + "&dose_type=" + doseType + "&dose_company=" + doseCompany , requestOptions)
+        fetch(backendServer + "/api/v1/slot/?date=" + slotDate + "&city=" + city + "&dose_type=" + doseType + "&dose_company=" + doseCompany , requestOptions)
         .then(function(response) {
       return response.json();
     })
