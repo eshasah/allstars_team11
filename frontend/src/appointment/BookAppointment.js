@@ -51,10 +51,10 @@ export default function BookAppointment(){
 
 
     var current_page = 1;
-var obj_per_page = 3;
+var obj_per_page = 2;
 function totNumPages()
 {
-    return Math.ceil(availableSlots.length / obj_per_page);
+    return Math.floor(availableSlots.length / obj_per_page);
 }
 
 function prevPage()
@@ -139,16 +139,15 @@ function change(page)
                     </button>
                 </div>
             </div>
-            <div className="TableList">
+            <div id="TableList">
                 {
                     availableSlots.map(item => 
                         <VaccineCard title={item.dose_company + " - " + item.dose_type} address={item.street + ", " + item.city + ", " + item.state + " " + item.zip_code}
                          datetime={item.start_time} place={item.place} slotData={item}/>)
 
-                         
                 }
-                <a href="javascript:prevPage()" id="btn_prev">Prev</a>&nbsp;
-                <a href="javascript:nextPage()" id="btn_next">Next</a><br/>
+                <a href="#" id="btn_prev" onClick={prevPage}>Prev</a>&nbsp;
+                <a href="#" id="btn_next" onClick={nextPage}>Next</a><br/>
                 page: <span id="page">1</span>
                 {
                     isSlot && 
