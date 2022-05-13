@@ -48,6 +48,54 @@ export default function BookAppointment(){
         .catch(error => console.log('error', error));
     }
 
+
+
+    var current_page = 1;
+var obj_per_page = 3;
+function totNumPages()
+{
+    return Math.ceil(availableSlots.length / obj_per_page);
+}
+
+function prevPage()
+{
+    if (current_page > 1) {
+        current_page--;
+        change(current_page);
+    }
+}
+function nextPage()
+{
+    if (current_page < totNumPages()) {
+        current_page++;
+        change(current_page);
+    }
+}
+function change(page)
+{
+    var btn_next = document.getElementById("btn_next");
+    var btn_prev = document.getElementById("btn_prev");
+    var listing_table = document.getElementById("TableList");
+    var page_span = document.getElementById("page");
+    if (page < 1) page = 1;
+    if (page > totNumPages()) page = totNumPages();
+    listing_table.innerHTML = "";
+    for (var i = (page-1) * obj_per_page; i < (page * obj_per_page); i++) {
+        listing_table.innerHTML += availableSlots[i].number + "<br>";
+    }
+    page_span.innerHTML = page;
+    if (page == 1) {
+        btn_prev.style.visibility = "hidden";
+    } else {
+        btn_prev.style.visibility = "visible";
+    }
+    if (page == totNumPages()) {
+        btn_next.style.visibility = "hidden";
+    } else {
+        btn_next.style.visibility = "visible";
+    }
+}
+
     return(
         <div className="MainDashboardContainer">         
             <div className="filterDiv">
@@ -91,12 +139,17 @@ export default function BookAppointment(){
                     </button>
                 </div>
             </div>
-            <div>
+            <div className="TableList">
                 {
                     availableSlots.map(item => 
                         <VaccineCard title={item.dose_company + " - " + item.dose_type} address={item.street + ", " + item.city + ", " + item.state + " " + item.zip_code}
                          datetime={item.start_time} place={item.place} slotData={item}/>)
+
+                         
                 }
+                <a href="javascript:prevPage()" id="btn_prev">Prev</a>&nbsp;
+                <a href="javascript:nextPage()" id="btn_next">Next</a><br/>
+                page: <span id="page">1</span>
                 {
                     isSlot && 
                     <div>
