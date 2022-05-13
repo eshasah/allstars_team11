@@ -21,7 +21,7 @@ exports.getUserByEmailAndPass = (req, res) => {
         connection.release();
 
         if (!error) {
-          res.status(200).send({
+          res.send({
             status: 200,
             message: "User logged in",
             data: row

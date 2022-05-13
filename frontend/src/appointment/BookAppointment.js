@@ -3,54 +3,15 @@ import VaccineCard from "./VaccineBody";
 
 export default function BookAppointment(){
 
-    // const available_slots = [
-    //     {
-    //         title: 'Pfizer-BioNTech - Dose 1',
-    //         address: '344 Tully Rd, San Jose, CA 95111',
-    //         date: '05/20/2022',
-    //         timing: '2:00pm'
-    //     },
-    //     {
-    //         title: 'Pfizer-BioNTech - Dose 2',
-    //         address: '344 Tully Rd, San Jose, CA 95111',
-    //         date: '05/20/2022',
-    //         timing: '2:10pm'
-    //     }
-    //     ,
-    //     {
-    //         title: 'Moderna - Dose 1',
-    //         address: '344 Tully Rd, San Jose, CA 95111',
-    //         date: '05/20/2022',
-    //         timing: '2:20pm'
-    //     }
-    //     ,
-    //     {
-    //         title: 'Moderna - Dose 2',
-    //         address: '344 Tully Rd, San Jose, CA 95111',
-    //         date: '05/21/2022',
-    //         timing: '2:00pm'
-    //     }
-    //     ,
-    //     {
-    //         title: 'Pfizer-BioNTech - Dose 1',
-    //         address: '344 Tully Rd, San Jose, CA 95111',
-    //         date: '05/18/2022',
-    //         timing: '1:30pm'
-    //     }
-    //     ,
-    //     {
-    //         title: 'Pfizer-BioNTech - Dose 1',
-    //         address: '344 Tully Rd, San Jose, CA 95111',
-    //         date: '05/20/2022',
-    //         timing: '3:00pm'
-    //     }
-    // ]
+    const [isSlot, setSlot] = useState(false);
 
     const [availableSlots, setAvailableSlots] = useState([]);
     const [city, setCity] = useState('');
     const [doseType, setDoseType] = useState('');
     const [doseCompany, setDoseCompany] = useState('');
     const [slotDate, setSlotDate] = useState('');
+
+    console.log("user_id: " + localStorage.getItem("user_id"));
 
     const searchSlots = () =>{
         console.log("city: " + city);
@@ -68,10 +29,22 @@ export default function BookAppointment(){
         };
 
         fetch("http://localhost:5000/api/v1/slot/?date=" + slotDate + "&city=" + city + "&dose_type=" + doseType + "&dose_company=" + doseCompany , requestOptions)
-        .then(result => {
-            console.log(result);
-            console.log(result.body);
-        })
+        .then(function(response) {
+      return response.json();
+    })
+        .then(function(data) {
+      //var userid = JSON.parse(data);
+      console.log(data);
+      setAvailableSlots(data);
+      if(availableSlots.length !== 0){
+          setSlot(true);
+        }
+        else{
+            setSlot(false);
+        }
+      console.log(availableSlots);
+      
+    })
         .catch(error => console.log('error', error));
     }
 
@@ -101,7 +74,6 @@ export default function BookAppointment(){
                         <option value="">--Please choose Vaccine Type--</option>
                         <option value="Pfizer-BioNTech">Pfizer-BioNTech</option>
                         <option value="Moderna">Moderna</option>
-                        <option value="Johnson &amp; Johnson">Johnson &amp; Johnson</option>
                     </select>
                 </div>
                 <div className='filter-inputs'>
@@ -122,7 +94,14 @@ export default function BookAppointment(){
             <div>
                 {
                     availableSlots.map(item => 
-                        <VaccineCard title={item.title} address={item.address} date={item.date} timing={item.timing} place={item.place}/>)
+                        <VaccineCard title={item.dose_company + " - " + item.dose_type} address={item.street + ", " + item.city + ", " + item.state + " " + item.zip_code}
+                         datetime={item.start_time} place={item.place} slotData={item}/>)
+                }
+                {
+                    isSlot && 
+                    <div>
+                        <h3>Modify filter to see slots</h3>
+                    </div>
                 }
             </div>
 

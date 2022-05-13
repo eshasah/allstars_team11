@@ -40,9 +40,14 @@ const useFormLogin = (callback, validate) => {
 
         var getURL = "http://localhost:5000/api/v1/users/" + values.email + "/" + values.password;
         fetch(getURL, requestOptions)
-        .then(result => {
-            console.log(result);
-            localStorage.setItem("user_id", result.user_id);
+        .then(function(response) {
+      return response.json();
+    })
+    .then(function(result) {
+      
+            console.log(result.data[0]);
+            localStorage.setItem("user_id", result.data[0].user_id);
+            localStorage.setItem("isLoggedIn", true);
             window.location.assign("/home");
         })
         .catch(error => console.log('error', error));

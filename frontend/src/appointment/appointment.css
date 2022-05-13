@@ -16,9 +16,6 @@
     border: #ffffff;
 }
 
-.vaccine-details{
-
-}
 
 .vaccine-title{
         display: flex;
@@ -85,7 +82,7 @@
 }
 
 .MainDashboardContainer{
-    display: flex;
+    /* display: flex; */
     align-items: center;
     justify-content: center;
 }
