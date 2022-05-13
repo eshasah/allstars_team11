@@ -1,16 +1,20 @@
 import React from "react";
 import axios from 'axios'
 import Header from './header'
+import VaccineCard from "../appointment/VaccineHistory";
 //import Sidebar from "./user_sidebar";
+
+
+
 class VaccinationHistory extends React.Component {
   state = {
     size: 0,
     getVaccineData: [],
     header: ["Dose", "Vaccination Name", "Reference Id", "Date of Vaccination", "Registered Mobile Number"],
     vaccineHistory: [
-      {"dose": "1", "vaccinationName": "Covaccine", "referenceId": 1, "dateOfVaccination": "12/03/2022", "mobileNo": 9999999999},
-      {"dose": "2", "vaccinationName": "Covaccine", "referenceId": 2, "dateOfVaccination": "12/06/2022", "mobileNo": 9999999999},
-      {"dose": "4", "vaccinationName": "Covaccine", "referenceId": 3, "dateOfVaccination": "12/09/2022", "mobileNo": 9999999999},
+      {"dose": "1", "vaccinationName": "Moderna", "referenceId": 1, "dateOfVaccination": "12/03/2022", "mobileNo": 678463891},
+      {"dose": "2", "vaccinationName": "Pfizer-BioNTech", "referenceId": 2, "dateOfVaccination": "12/06/2022", "mobileNo": 938916784},
+      {"dose": "3", "vaccinationName": "Moderna", "referenceId": 3, "dateOfVaccination": "12/09/2022", "mobileNo": 7676576788},
     ]
   }
 
@@ -54,43 +58,17 @@ render() {
           <span className="carousel-control-next-icon"></span>
         </a>
       </div><><br></br>
+      
           <h1 className="text-center">Vaccination History</h1>
           <br></br>
           <h3 className="text-center"><b>This tab allows you to see the vaccination history.</b> </h3>
           <br></br><div className="container">
-            <table className="table">
-              <thead className="thead-dark">
-                <tr>
-                  {this.state.header.map(head => {
-                    return <th scope="col">{head}</th>;
-                  })}
-                </tr>
-              </thead>
-              <tbody>
-
-              <>
-              { this.state.vaccineHistory.length > 0 ?
-              <>{this.state.vaccineHistory.map(vaccine => {
-                return (
-                  <tr>
-                  <td>{vaccine.dose}</td>
-                  <td>{vaccine.vaccinationName}</td>
-                  <td>{vaccine.referenceId}</td>
-                  <td>{vaccine.dateOfVaccination}</td>
-                  <td>{vaccine.mobileNo}</td>
-                </tr>
-                );
-            
-            })}</>
-              : 
-                      <div style={{display: 'flex',  testAlign:'center', alignSelf:'center'}}>
-            <h1>There is no Vaccine History for you !! </h1>
-        </div>
-              }
-            </>
-                
-              </tbody>
-            </table>
+          <div>
+                {
+                    this.state.vaccineHistory.map(vaccine => 
+                        <VaccineCard VaccineName={vaccine.vaccinationName} Dose={vaccine.dose} date={vaccine.dateOfVaccination} Mobile={vaccine.mobileNo}/>)
+                }
+            </div>
 
           </div></></>
     )

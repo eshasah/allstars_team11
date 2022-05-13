@@ -21,7 +21,7 @@ const Title = (props) => {
 
 const Location = (props) => {
   return(
-    <div className="vaccine-location">
+    <div className='vaccine-book-div'>
       <h5>{props.place}</h5>
       <span>{props.address}</span>
     </div>
